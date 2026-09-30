@@ -14,12 +14,14 @@ const isActive = href === pathname || href === `/${subpath?.[0] || ""}`;
 	<slot />
 </a>
 <style>
+	a:hover {
+		background-color: rgb(var(--gray-light));
+		transition-property: background-color;
+		transition-timing-function: var(--default-transition-timing-function);
+		transition-duration: var(--default-transition-duration);
+	}
 	a {
 		display: inline-block;
 		text-decoration: none;
-	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
 	}
 </style>
