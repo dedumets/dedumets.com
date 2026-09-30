@@ -3,7 +3,22 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Your name here. All rights reserved.
+	<div class="copyright">
+		<p>&copy; {today.getFullYear()} Lauris Patriks Dedumets</p>
+		<p>
+			Unless otherwise noted, content on this site is licensed under the&nbsp;
+			<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
+				CC-BY-4.0
+			</a>
+			&nbsp;license. Source code for the site is available on&nbsp;
+			<a href="https://github.com/dedumets/dedumets.com" target="_blank">
+				GitHub
+			</a>
+			&nbsp;under the&nbsp;
+			<a href="https://opensource.org/license/mit" target="_blank">MIT</a>
+			&nbsp;license.
+		</p>
+	</div>
 	<div class="social-links">
 		<a href="https://m.webtoo.ls/@astro" target="_blank">
 			<span class="sr-only">Follow Astro on Mastodon</span>
@@ -58,6 +73,14 @@ const today = new Date();
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		text-align: center;
+	}
+	.copyright {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5em;
+	}
+	.copyright p {
+		margin: 0 1em;
 	}
 	.social-links {
 		display: flex;

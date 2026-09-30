@@ -1,63 +1,44 @@
-# Astro Starter Kit: Blog
+# dedumets.com
 
-```sh
-pnpm create astro@latest -- --template blog
-```
+Personal blog for Lauris Patriks Dedumets.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Structure
 
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+The repository is an [Astro](https://astro.build/) app, based on their Blog template.
 
 ```text
-├── public/
+├── public/         # Directly accessible public assets
 ├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+│   ├── assets/     # Internally and dynamically utilized assets
+│   ├── components/ # Building blocks for pages
+│   ├── content/    # Astro collections, including the blog posts themselves
+│   ├── layouts/    # Shared UI layouts for entire pages
+│   └── pages/      # Accessible pages
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Contributing
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Creating issues or pull requests to fix typos or false information is welcome
+and encouraged.
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+All issues and pull requests regarding code changes will be reviewed, but I do
+not guarantee acknowledgement or attribution for any fixes or improvements.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Licensing
 
-## 🧞 Commands
+The repository contains both the source code of the website, as well as the written
+content that makes up the blog sections on the website, which are made available
+under different licenses.
 
-All commands are run from the root of the project, from a terminal:
+Unless otherwise noted, the source code used to build and run this website is
+licensed under the MIT License. See [LICENSE-CODE](./LICENSE-CODE) for the full
+license text.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
+Unless otherwise noted, the original written content of the blog, located in
+`src/content/blog/`, is licensed under the Creative Commons Attribution 4.0
+International License. See [LICENSE-CONTENT](./LICENSE-CONTENT) for the full
+license text.
 
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+Third-party materials, including images, fonts, and other assets, may be subject
+to separate copyright and licensing terms. Their respective licenses and
+attribution requirements apply where indicated.
