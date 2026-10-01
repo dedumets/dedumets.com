@@ -39,7 +39,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 		<Font cssVariable="--font-atkinson" preload />
 
 		<!-- Primary Meta -->
-		<title>{title}</title>
+		<title>{title ? `${title} | dedumets` : "dedumets"}</title>
 		<meta name="description" content={description}>
 
 		<!-- Open Graph / Facebook -->

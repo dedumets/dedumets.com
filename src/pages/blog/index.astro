@@ -9,7 +9,10 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<Layout>
+<Layout
+	title="Blog"
+	description="Personal opinions, progress updates, and anything else I feel like sharing from my daily life."
+>
 	<section>
 		<ul>
 			{posts.map((post) => (
