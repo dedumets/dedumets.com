@@ -52,14 +52,14 @@ const today = new Date();
 	}
 
 	.socials a:hover {
-		color: rgb(var(--gray-dark));
+		color: var(--primary-foreground);
 	}
 
 	.socials a {
 		width: 32px;
 		height: 32px;
 		text-decoration: none;
-		color: rgb(var(--gray));
+		color: var(--secondary-foreground);
 	}
 
 	.socials {
@@ -73,8 +73,8 @@ const today = new Date();
 		flex-direction: column;
 		gap: 2em;
 		padding: 2em 1em 4em 1em;
-		background: linear-gradient(var(--gray-gradient)) no-repeat;
-		color: rgb(var(--gray));
+		background: linear-gradient(var(--background)) no-repeat;
+		color: var(--secondary-foreground);
 		text-align: center;
 
 		& > * {
