@@ -43,7 +43,7 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	font-family: var(--font-atkinson);
+	font-family: var(--font-sans);
 	background: linear-gradient(var(--background)) no-repeat;
 	background-size: 100% 600px;
 	color: var(--foreground);
@@ -136,11 +136,14 @@ code {
 }
 
 pre {
+	font-family: var(--font-mono);
+	font-size: 0.8em;
+	line-height: 1.5;
 	padding: 1.5em;
 	border-radius: 8px;
 }
 
-pre > code {
+pre>code {
 	all: unset;
 }
 

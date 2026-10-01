@@ -36,7 +36,8 @@ const { title, description, image = FallbackImage } = Astro.props;
 		>
 		<link rel="canonical" href={canonicalURL}>
 
-		<Font cssVariable="--font-atkinson" preload />
+		<Font cssVariable="--font-mono" preload />
+		<Font cssVariable="--font-sans" preload />
 
 		<!-- Primary Meta -->
 		<title>{title ? `${title} | dedumets` : "dedumets"}</title>

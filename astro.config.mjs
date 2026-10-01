@@ -16,26 +16,16 @@ export default defineConfig({
 	],
 	fonts: [
 		{
-			provider: fontProviders.local(),
-			name: "Atkinson",
-			cssVariable: "--font-atkinson",
+			provider: fontProviders.google(),
+			name: "K2D",
+			cssVariable: "--font-sans",
 			fallbacks: ["sans-serif"],
-			options: {
-				variants: [
-					{
-						src: ["./src/assets/fonts/atkinson-regular.woff"],
-						weight: 400,
-						style: "normal",
-						display: "swap",
-					},
-					{
-						src: ["./src/assets/fonts/atkinson-bold.woff"],
-						weight: 700,
-						style: "normal",
-						display: "swap",
-					},
-				],
-			},
+		},
+		{
+			provider: fontProviders.google(),
+			name: "Cascadia Mono",
+			cssVariable: "--font-mono",
+			fallbacks: ["mono"],
 		},
 	],
 });
