@@ -4,10 +4,16 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig, fontProviders } from "astro/config";
 
-// https://astro.build/config
 export default defineConfig({
 	site: "https://dedumets.com",
-	integrations: [mdx(), sitemap()],
+	trailingSlash: "never",
+	integrations: [
+		mdx(),
+		sitemap({
+			// TODO: Consider implementing sitemaps manually to automate hiding posts.
+			filter: (page) => page.includes("markdown-style-guide"),
+		}),
+	],
 	fonts: [
 		{
 			provider: fontProviders.local(),

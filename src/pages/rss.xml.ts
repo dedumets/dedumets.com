@@ -5,7 +5,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { getCollection } from "astro:content";
 
 export const GET = (async ({ site }) => {
-	const posts = await getCollection("blog");
+	const posts = (await getCollection("blog"))
+		.filter((post) => !post.data.hidden)
+		.sort((a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf());
 
 	if (!site) {
 		return new Response(null, {
