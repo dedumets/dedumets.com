@@ -1,6 +1,5 @@
 ---
 import IconDedumets from "../assets/icons/icon-dedumets.svg";
-import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header>
@@ -11,13 +10,23 @@ import HeaderLink from "./HeaderLink.astro";
 				<IconDedumets width={128} fill="currentcolor" class="desktop-only" />
 			</a>
 		</h2>
-		<div class="links">
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
-		</div>
+		<ul class="links">
+			<li>
+				<a href="/blog">Blog</a>
+			</li>
+			<li>
+				<a href="/about">About</a>
+			</li>
+		</ul>
 	</nav>
 </header>
 <style>
+	header {
+		padding: 0.5em 1em;
+		background: var(--background-header);
+		box-shadow: 0 2px 8px var(--black-shadow);
+	}
+
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
@@ -28,40 +37,6 @@ import HeaderLink from "./HeaderLink.astro";
 		font-size: 1em;
 	}
 
-	nav .links {
-		display: grid;
-		grid-template-columns: repeat(2, 8rem);
-	}
-
-	nav .links a.active {
-		text-decoration: none;
-		border-bottom-color: var(--accent-primary);
-	}
-
-	nav .links a:hover,
-	nav .links a:focus {
-		background-color: var(--primary);
-		border-bottom-color: var(--accent-secondary);
-	}
-
-	nav a {
-		display: flex;
-		justify-content: center;
-		padding: 10px 0 6px;
-		color: var(--foreground);
-		border-bottom: 4px solid transparent;
-		text-decoration: none;
-	}
-
-	nav svg {
-		transition: var(--transition-duration) var(--transition-function);
-	}
-
-	nav a:hover svg,
-	nav a:focus svg {
-		fill: var(--accent-secondary);
-	}
-
 	nav {
 		display: flex;
 		align-items: center;
@@ -70,19 +45,30 @@ import HeaderLink from "./HeaderLink.astro";
 		margin: 0 auto;
 	}
 
-	header {
-		padding: 0 1em;
-		background: var(--background-header);
-		box-shadow: 0 2px 8px var(--black-shadow);
+	nav svg {
+		transition: var(--transition-duration) var(--transition-function);
 	}
 
-	@media (max-width: 720px) {
-		.links {
-			grid-template-columns: repeat(2, 5rem);
-		}
+	nav a {
+		color: var(--foreground);
+	}
 
-		header {
-			padding-right: 0;
-		}
+	nav a:hover {
+		color: var(--accent-secondary);
+	}
+
+	nav a:hover svg,
+	nav a:focus svg {
+		fill: var(--accent-secondary);
+	}
+
+	nav .links {
+		display: flex;
+		gap: 2rem;
+	}
+
+	nav ul {
+		margin: 0;
+		list-style-type: none;
 	}
 </style>
