@@ -12,11 +12,12 @@ interface Props {
 	title: string;
 	description: string;
 	image?: ImageMetadata;
+	meta?: { name: string; content: string }[];
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const { title, description, image = FallbackImage, meta = [] } = Astro.props;
 ---
 
 <!doctype html>
@@ -42,6 +43,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 		<!-- Primary Meta -->
 		<title>{title ? `${title} | dedumets` : "dedumets"}</title>
 		<meta name="description" content={description}>
+		{meta.map((m) => <meta name={m.name} content={m.content}>)}
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website">
