@@ -10,9 +10,9 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"format": "pnpx @biomejs/biome format --write",
-		"lint": "pnpx @biomejs/biome lint --write",
-		"check": "pnpx @biomejs/biome check --write"
+		"format": "biome format --write",
+		"lint": "biome lint --write",
+		"check": "biome check --write"
 	},
 	"dependencies": {
 		"@astrojs/mdx": "^8.0.2",
