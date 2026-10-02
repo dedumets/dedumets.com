@@ -40,6 +40,11 @@ html {
 	}
 }
 
+:focus-visible {
+	outline: 2px solid var(--accent-primary);
+	border-radius: 4px;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -98,7 +103,8 @@ a {
 	transition: var(--transition-duration) var(--transition-function);
 }
 
-a:hover {
+a:hover,
+a:focus {
 	color: var(--accent-secondary);
 }
 
@@ -143,7 +149,7 @@ pre {
 	border-radius: 8px;
 }
 
-pre>code {
+pre > code {
 	all: unset;
 }
 
@@ -156,7 +162,7 @@ blockquote {
 
 hr {
 	border: none;
-	border-top: 1px solid var(--primary);
+	border-top: 1px solid var(--secondary-foreground-shadow);
 }
 
 .sr-only {
@@ -184,6 +190,30 @@ hr {
 }
 
 @media (max-width: 720px) {
+	h1 {
+		font-size: 2.2em;
+	}
+
+	h2 {
+		font-size: 2em;
+	}
+
+	h3 {
+		font-size: 1.8em;
+	}
+
+	h4 {
+		font-size: 1.6em;
+	}
+
+	h5 {
+		font-size: 1.4em;
+	}
+
+	h6 {
+		font-size: 1.25em;
+	}
+
 	.desktop-only {
 		display: none;
 	}

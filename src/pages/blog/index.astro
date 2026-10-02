@@ -1,7 +1,7 @@
 ---
-import FormattedDate from "../../components/FormattedDate.astro";
+import IconRSS from "../../assets/icons/icon-rss.svg";
+import BlogPost from "../../components/BlogPost.astro";
 import Layout from "../../layouts/Root.astro";
-import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog"))
@@ -13,19 +13,21 @@ const posts = (await getCollection("blog"))
 	title="Blog"
 	description="Personal opinions, progress updates, and anything else I feel like sharing from my daily life."
 >
+	<div class="heading">
+		<h1>Blog</h1>
+		<div class="rss">
+			also available as&nbsp;
+			<a href="/rss.xml">
+				RSS
+				<IconRSS width={16} height={16} fill="currentcolor" />
+			</a>
+		</div>
+	</div>
 	<section>
 		<ul>
 			{posts.map((post) => (
 				<li>
-					<a href={`/blog/${post.id}/`}>
-						{post.data.thumbnail && (
-							<Image width={720} height={360} src={post.data.thumbnail} alt="" />
-						)}
-						<h4 class="title">{post.data.title}</h4>
-						<p class="date">
-							<FormattedDate date={post.data.createdAt} />
-						</p>
-					</a>
+					<BlogPost post={post} />
 				</li>
 			))}
 		</ul>
@@ -33,50 +35,6 @@ const posts = (await getCollection("blog"))
 </Layout>
 
 <style>
-	.title {
-		margin: 0;
-		color: var(--primary-foreground);
-		line-height: 1;
-	}
-	.date {
-		margin: 0;
-		color: var(--secondary-foreground);
-	}
-	main {
-		width: 960px;
-	}
-	ul li a:hover h4,
-	ul li a:hover .date {
-		color: rgb(var(--accent-primary));
-	}
-	ul li * {
-		text-decoration: none;
-		transition: var(--transition-duration) var(--transition-function);
-	}
-	ul li:first-child {
-		width: 100%;
-		margin-bottom: 1rem;
-		text-align: center;
-	}
-	ul li img {
-		margin-bottom: 0.5rem;
-		border-radius: 12px;
-	}
-	ul li:first-child img {
-		width: 100%;
-	}
-	ul li:first-child .title {
-		font-size: 2.369rem;
-	}
-	ul li a {
-		display: block;
-	}
-	ul li {
-		width: calc(50% - 1rem);
-	}
-	ul a:hover img {
-		box-shadow: var(--box-shadow);
-	}
 	ul {
 		display: flex;
 		flex-wrap: wrap;
@@ -85,16 +43,36 @@ const posts = (await getCollection("blog"))
 		margin: 0;
 		padding: 0;
 	}
+
+	.heading {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		margin-bottom: 2em;
+	}
+
+	.heading h1 {
+		margin: 0;
+	}
+
+	.heading .rss {
+		color: var(--secondary-foreground);
+		text-align: right;
+	}
+
+	.heading .rss a {
+		display: inline-block;
+	}
+
+	.heading .rss svg {
+		margin-left: 0.25em;
+	}
+
 	@media (max-width: 720px) {
 		ul {
-			gap: 0.5em;
+			gap: 1em;
 		}
-		ul li:first-child {
-			margin-bottom: 0;
-		}
-		ul li:first-child .title {
-			font-size: 1.563em;
-		}
+
 		ul li {
 			width: 100%;
 			text-align: center;

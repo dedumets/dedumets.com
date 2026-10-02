@@ -1,73 +1,143 @@
 ---
+import IconEdit from "../assets/icons/icon-edit.svg";
+import BlogPost from "../components/BlogPost.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import { LINK_REPOSITORY } from "../consts";
 import Layout from "../layouts/Root.astro";
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import { getEntries } from "astro:content";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = { post: CollectionEntry<"blog"> };
 
-const { title, description, createdAt, updatedAt, thumbnail } = Astro.props;
+const { post } = Astro.props;
+
+const relatedPosts =
+	post.data.relatedPosts && (await getEntries(post.data.relatedPosts));
 ---
 
-<Layout title={title} description={description} image={thumbnail}>
+<Layout
+	title={post.data.title}
+	description={post.data.description}
+	image={post.data.thumbnail}
+>
 	<article>
 		<div class="thumbnail">
-			{thumbnail && <Image width={1020} height={510} src={thumbnail} alt="" />}
+			{post.data.thumbnail && (
+				<Image width={600} height={300} src={post.data.thumbnail} alt="" />
+			)}
 		</div>
 		<div class="prose">
 			<div class="title">
 				<div class="date">
-					<FormattedDate date={createdAt} />
-					{updatedAt && (
-	<div class="updated-at">
-		Last updated on <FormattedDate date={updatedAt} />
-	</div>
-)}
+					<FormattedDate date={post.data.createdAt} />
+					{post.data.updatedAt && (
+						<div class="updated-at">
+							Last updated on <FormattedDate date={post.data.updatedAt} />
+						</div>
+					)}
 				</div>
-				<h1>{title}</h1>
+				<h1>{post.data.title}</h1>
 				<hr>
 			</div>
 			<slot />
 		</div>
 	</article>
+	<hr>
+	<div class="footer">
+		<div class="related">
+			{relatedPosts?.length && (
+				<h2>Related posts</h2>
+				<p>If you liked this, you may also like these</p>
+				<ul>
+					{relatedPosts.map((post) => (
+						<li>
+							<BlogPost post={post} />
+						</li>
+					))}
+				</ul>
+			)}
+		</div>
+		<p class="info">
+			<IconEdit width={20} height={20} />
+			<span>
+				Spot a mistake? Help me out and open a&nbsp;
+				<a
+					href={`${LINK_REPOSITORY}/blob/main/src/content/blog/${post.id}.md`}
+					target="_blank"
+					rel="noreferrer"
+				>
+					pull request
+				</a>!
+			</span>
+		</p>
+	</div>
 </Layout>
-
 <style>
-	main {
-		width: calc(100% - 2em);
-		max-width: 100%;
-		margin: 0;
-	}
 	.thumbnail {
 		width: 100%;
 	}
+
 	.thumbnail img {
 		display: block;
 		margin: 0 auto;
 		border-radius: 12px;
 		box-shadow: var(--box-shadow);
 	}
+
 	.prose {
-		width: 720px;
-		max-width: calc(100% - 2em);
+		max-width: calc(100% - 1em);
 		margin: auto;
-		padding: 1em;
+		padding: 0.5em;
 		color: var(--secondary);
 	}
+
 	.title {
 		margin-bottom: 1em;
 		padding: 1em 0;
 		text-align: center;
 		line-height: 1;
 	}
+
 	.title h1 {
 		margin: 0 0 0.5em 0;
 	}
+
 	.date {
 		margin-bottom: 0.5em;
 		color: var(--secondary-foreground);
 	}
+
 	.updated-at {
 		font-style: italic;
+	}
+
+	.footer p {
+		margin-top: 2em;
+		color: var(--secondary-foreground);
+	}
+
+	.footer .info {
+		display: flex;
+		align-items: center;
+		font-style: italic;
+	}
+
+	.footer .info svg {
+		margin-right: 4px;
+	}
+
+	.related ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		list-style-type: none;
+		margin: 1rem 0 0;
+		padding: 0;
+	}
+
+	.related h2,
+	.related p {
+		margin: 0;
 	}
 </style>

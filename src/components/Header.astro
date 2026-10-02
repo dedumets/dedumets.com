@@ -38,7 +38,8 @@ import HeaderLink from "./HeaderLink.astro";
 		border-bottom-color: var(--accent-primary);
 	}
 
-	nav .links a:hover {
+	nav .links a:hover,
+	nav .links a:focus {
 		background-color: var(--primary);
 		border-bottom-color: var(--accent-secondary);
 	}
@@ -56,7 +57,8 @@ import HeaderLink from "./HeaderLink.astro";
 		transition: var(--transition-duration) var(--transition-function);
 	}
 
-	nav svg:hover {
+	nav a:hover svg,
+	nav a:focus svg {
 		fill: var(--accent-secondary);
 	}
 

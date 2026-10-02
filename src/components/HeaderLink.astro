@@ -14,7 +14,8 @@ const isActive = href === pathname || href === `/${subpath?.[0] || ""}`;
 	<slot />
 </a>
 <style>
-	a:hover {
+	a:hover,
+	a:focus {
 		background-color: rgb(var(--primary));
 	}
 	a {
