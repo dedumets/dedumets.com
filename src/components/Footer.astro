@@ -19,8 +19,10 @@ const today = new Date();
 		<p>&copy; {today.getFullYear()} Lauris Patriks Dedumets</p>
 		<p>
 			Unless otherwise noted, content on this site is licensed under the&nbsp;
-			<a href={LINK_CC_BY} target="_blank">CC-BY-4.0</a>&nbsp;license. Source
-			code for the site is available on&nbsp;
+			<a href={LINK_CC_BY} target="_blank">CC-BY-4.0</a>&nbsp;license.
+		</p>
+		<p>
+			Source code for the site is available on&nbsp;
 			<a href={LINK_REPOSITORY} target="_blank">GitHub</a>&nbsp;under the&nbsp;
 			<a href={LINK_MIT} target="_blank">MIT</a>&nbsp;license.
 		</p>
@@ -48,7 +50,7 @@ const today = new Date();
 	.copyright {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5em;
+		gap: 0.25em;
 	}
 
 	.socials a:hover {
@@ -78,7 +80,7 @@ const today = new Date();
 		text-align: center;
 
 		& > * {
-			max-width: var(--page-width);
+			max-width: var(--content-width);
 			margin: 0 auto;
 		}
 	}

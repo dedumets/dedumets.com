@@ -63,7 +63,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 </html>
 <style>
 	main {
-		width: calc(var(--page-width) / 2);
+		width: var(--content-width);
 		max-width: calc(100% - 2em);
 		margin: auto;
 		padding: 3em 1em;

@@ -13,7 +13,6 @@ import HeaderLink from "./HeaderLink.astro";
 		</h2>
 		<div class="links">
 			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/projects">Projects</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
 		</div>
 	</nav>
@@ -31,7 +30,7 @@ import HeaderLink from "./HeaderLink.astro";
 
 	nav .links {
 		display: grid;
-		grid-template-columns: repeat(3, 8rem);
+		grid-template-columns: repeat(2, 8rem);
 	}
 
 	nav .links a.active {
@@ -65,7 +64,7 @@ import HeaderLink from "./HeaderLink.astro";
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		max-width: var(--page-width);
+		max-width: var(--content-width);
 		margin: 0 auto;
 	}
 
@@ -77,7 +76,7 @@ import HeaderLink from "./HeaderLink.astro";
 
 	@media (max-width: 720px) {
 		.links {
-			grid-template-columns: repeat(3, 5rem);
+			grid-template-columns: repeat(2, 5rem);
 		}
 
 		header {
