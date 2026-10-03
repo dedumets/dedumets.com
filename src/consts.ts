@@ -6,3 +6,5 @@ export const LINK_GITHUB = "https://github.com/dedumets";
 export const LINK_KOFI = "https://ko-fi.com/dedumets";
 export const LINK_MIT = "https://opensource.org/license/mit";
 export const LINK_REPOSITORY = "https://github.com/dedumets/dedumets.com";
+export const LINK_RETROACHIEVEMENTS =
+  "https://retroachievements.org/user/Lorech";
