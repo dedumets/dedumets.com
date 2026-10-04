@@ -1,48 +1,83 @@
 ---
+import BlogPost from "../components/BlogPost.astro";
+import { LINK_BLUESKY, LINK_GITHUB, LINK_KOFI } from "../consts";
 import Layout from "../layouts/Root.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+	.filter((post) => !post.data.hidden)
+	.sort((a, b) => b.data.createdAt.valueOf() - a.data.createdAt.valueOf())
+	.slice(0, 5);
 ---
 
-<Layout description="Personal website of Lauris Patriks Dedumets.">
-	<h1>🧑‍🚀 Hello, Astronaut!</h1>
+<Layout
+	title="Lauris Patriks"
+	description="Personal website of Lauris Patriks Dedumets."
+>
+	<h1>Hi, I'm Lauris Patriks!</h1>
 	<p>
-		Welcome to the official <a href="https://astro.build/">Astro</a> blog
-		starter template. This template serves as a lightweight, minimally-styled
-		starting point for anyone looking to build a personal website, blog, or
-		portfolio with Astro.
+		I am a software developer based in Rīga, Latvia. I like challenging myself,
+		learning and improving my skills, both in my professional and personal life.
 	</p>
 	<p>
-		This template comes with a few integrations already configured in your{" "}
-		<code>astro.config.mjs</code>{" "}
-		file. You can customize your setup with{" "}
-		<a href="https://astro.build/integrations">Astro Integrations</a>{" "}
-		to add tools like Tailwind, React, or Vue to your project.
+		This is my space to vent and to share whatever I'm working on. If you like
+		what I say or do, you can:
 	</p>
-	<p>Here are a few ideas on how to get started with the template:</p>
 	<ul>
-		<li>Edit this page in <code>src/pages/index.astro</code></li>
 		<li>
-			Edit the site header items in <code>src/components/Header.astro</code>
+			Hear more from me by following me on&nbsp;
+			<a href={LINK_BLUESKY} target="_blank" rel="noopener">Bluesky</a>
 		</li>
 		<li>
-			Add your name to the footer in <code>src/components/Footer.astro</code>
+			See more of my work by checking out my&nbsp;
+			<a href={LINK_GITHUB} target="_blank" rel="noopener">GitHub</a>
 		</li>
-		<li>Check out the included blog posts in <code>src/content/blog/</code></li>
 		<li>
-			Customize the blog post page layout in{" "}
-			<code>src/layouts/BlogPost.astro</code>
+			Support my work on&nbsp;
+			<a href={LINK_KOFI} target="_blank" rel="noopener">Ko-Fi</a>
 		</li>
 	</ul>
-	<p>
-		Have fun! If you get stuck, remember to{" "}
-		<a href="https://docs.astro.build/">read the docs</a>{" "}
-		or <a href="https://astro.build/chat">join us on Discord</a> to ask
-		questions.
-	</p>
-	<p>
-		Looking for a blog template with a bit more personality? Check out{" "}
-		<a href="https://github.com/Charca/astro-blog-template"
-			>astro-blog-template</a
-		>{" "}
-		by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-	</p>
+	{!!posts.length && (
+		<div class="blog">
+			<hr>
+			<h2>Blog</h2>
+			<ul>
+				{posts.map((post) => (
+					<li>
+						<BlogPost post={post} />
+					</li>
+				))}
+			</ul>
+			<div class="footer">
+				<a href="/blog">see all posts ></a>
+			</div>
+		</div>
+	)}
 </Layout>
+
+<style>
+	.blog ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.footer {
+		margin-top: 1em;
+		text-align: right;
+	}
+
+	@media (max-width: 720px) {
+		.blog ul {
+			gap: 1em;
+		}
+
+		.blog ul li {
+			width: 100%;
+			text-align: center;
+		}
+	}
+</style>
