@@ -41,7 +41,7 @@ const { title, description, image = FallbackImage, meta = [] } = Astro.props;
 		<Font cssVariable="--font-sans" preload />
 
 		<!-- Primary Meta -->
-		<title>{title ? `${title} | dedumets` : "dedumets"}</title>
+		<title>{`${title} | Dedumets`}</title>
 		<meta name="description" content={description}>
 		{meta.map((m) => <meta name={m.name} content={m.content}>)}
 
