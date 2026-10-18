@@ -43,12 +43,12 @@ const relatedPosts =
 			<slot />
 		</div>
 	</article>
-	<hr>
 	<div class="footer">
+		<hr>
 		<div class="related">
 			{relatedPosts?.length && (
 				<h2>Related posts</h2>
-				<p>If you liked this, you may also like these</p>
+				<p>If you liked this, you may also like {relatedPosts.length === 1 ? "this one" : "one of these"}...</p>
 				<ul>
 					{relatedPosts.map((post) => (
 						<li>
@@ -68,7 +68,8 @@ const relatedPosts =
 					rel="noreferrer"
 				>
 					pull request
-				</a>!
+				</a
+				>!
 			</span>
 		</p>
 	</div>
@@ -112,8 +113,13 @@ const relatedPosts =
 		font-style: italic;
 	}
 
+	.footer {
+		max-width: calc(100% - 1em);
+		margin: auto;
+		padding: 0.5em;
+	}
+
 	.footer p {
-		margin-top: 2em;
 		color: var(--secondary-foreground);
 	}
 

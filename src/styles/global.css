@@ -116,6 +116,11 @@ p {
 	margin-bottom: 2em;
 }
 
+.prose p:has(+ ul),
+.prose p:has(+ ol) {
+	margin-bottom: 1em;
+}
+
 textarea {
 	width: 100%;
 	font-size: 16px;
@@ -149,7 +154,7 @@ pre {
 	border-radius: 8px;
 }
 
-pre > code {
+pre>code {
 	all: unset;
 }
 
@@ -163,6 +168,16 @@ blockquote {
 hr {
 	border: none;
 	border-top: 1px solid var(--secondary-foreground-shadow);
+}
+
+sup {
+	line-height: 1;
+}
+
+.footnotes {
+	p {
+		margin-bottom: unset;
+	}
 }
 
 .sr-only {
