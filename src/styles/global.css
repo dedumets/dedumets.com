@@ -121,6 +121,41 @@ p {
 	margin-bottom: 1em;
 }
 
+.prose h2 a,
+.prose h3 a,
+.prose h4 a,
+.prose h5 a,
+.prose h6 a {
+	color: unset;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+
+		&:before,
+		&:after {
+			position: absolute;
+			margin-top: 0.25em;
+			font-size: 0.75em;
+			color: var(--accent-primary);
+		}
+
+		@media (min-width: 720px) {
+			&:before {
+				content: "#";
+				margin-left: -1em;
+			}
+		}
+
+		@media (max-width: 720px) {
+			&:after {
+				content: "#";
+				margin-left: 0.25em;
+			}
+		}
+	}
+}
+
 textarea {
 	width: 100%;
 	font-size: 16px;
@@ -154,7 +189,7 @@ pre {
 	border-radius: 8px;
 }
 
-pre>code {
+pre > code {
 	all: unset;
 }
 
